@@ -3,11 +3,6 @@ module "template_files" {
 
   base_dir = "${path.module}/web"
 }
-
-provider "aws" {
-  region = var.aws_region
-}
-#######################THE FOLLOWING BLOCK IS TO TEST THE LAMBDA & API GATEWAY CREATION########################
 ##########################################################################
 data "aws_iam_policy_document" "assume_role" {
   statement {
