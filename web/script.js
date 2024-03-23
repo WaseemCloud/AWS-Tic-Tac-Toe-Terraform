@@ -19,7 +19,7 @@ function makeMove(index) {
 }
 
 function aiMove() {
-  const apiUrl = 'API-INVOKE-URL';  // Replace with your API endpoint URL
+  const apiUrl = 'API-GATEWAY-INVOKE-URL';  // Replace with your API endpoint URL
 
    console.log('Making AI move request...');
 
