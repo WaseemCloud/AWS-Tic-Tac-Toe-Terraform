@@ -1,22 +1,8 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.0"
-    }
-  }
-}
-
 module "template_files" {
   source = "hashicorp/dir/template"
 
   base_dir = "${path.module}/web"
 }
-
-provider "aws" {
-  region = var.aws_region
-}
-#######################THE FOLLOWING BLOCK IS TO TEST THE LAMBDA & API GATEWAY CREATION########################
 ##########################################################################
 data "aws_iam_policy_document" "assume_role" {
   statement {
@@ -87,27 +73,6 @@ resource "aws_api_gateway_method" "gw-method" {
 
   depends_on = [aws_api_gateway_rest_api.rest-api, aws_api_gateway_resource.api-gw-resource]
 }
-/*
-resource "aws_api_gateway_method" "gw-method-1" {
-  api_key_required = "false"
-  authorization    = "NONE"
-  http_method      = "OPTIONS"
-  resource_id      = aws_api_gateway_resource.api-gw-resource.id
-  rest_api_id      = aws_api_gateway_rest_api.rest-api.id
-
-  depends_on = [aws_api_gateway_rest_api.rest-api, aws_api_gateway_resource.api-gw-resource]
-}
-
-resource "aws_api_gateway_method" "gw-method-2" {
-  api_key_required = "false"
-  authorization    = "NONE"
-  http_method      = "POST"
-  resource_id      = aws_api_gateway_resource.api-gw-resource.id
-  rest_api_id      = aws_api_gateway_rest_api.rest-api.id
-
-  depends_on = [aws_api_gateway_rest_api.rest-api, aws_api_gateway_resource.api-gw-resource]
-}
-*/
 ##########################################################################
 resource "aws_api_gateway_method_response" "gw-method-response-1" {
   http_method = "OPTIONS"
@@ -209,7 +174,6 @@ resource "aws_api_gateway_integration_response" "gw-integration-response-1" {
     "method.response.header.Access-Control-Allow-Origin"  = "'*'"
   }
 
-  #rest_api_id = "owav8u29i4"
   rest_api_id          = aws_api_gateway_rest_api.rest-api.id
   status_code = "200"
 
@@ -218,7 +182,6 @@ resource "aws_api_gateway_integration_response" "gw-integration-response-1" {
 
 resource "aws_api_gateway_integration_response" "gw-integration-response-2" {
   http_method = "POST"
-  #resource_id = "mc1qiqtboe"
   resource_id          = aws_api_gateway_resource.api-gw-resource.id
 
   response_parameters = {
@@ -226,7 +189,6 @@ resource "aws_api_gateway_integration_response" "gw-integration-response-2" {
   }
 
   rest_api_id          = aws_api_gateway_rest_api.rest-api.id
-  #rest_api_id = "owav8u29i4"
   status_code = "200"
 
   depends_on = [
@@ -236,17 +198,10 @@ resource "aws_api_gateway_integration_response" "gw-integration-response-2" {
     aws_api_gateway_method_response.gw-method-response-2, aws_lambda_function.lambda-fn,
     aws_api_gateway_integration.gw-integration-2
   ]
-  #depends_on = [aws_api_gateway_rest_api.rest-api, aws_api_gateway_resource.api-gw-resource, aws_api_gateway_method.gw-method-1, aws_api_gateway_method.gw-method-2]
 }
 ##########################################################################
 resource "aws_api_gateway_deployment" "api-deploy" {
   rest_api_id             = aws_api_gateway_rest_api.rest-api.id
-
-/*
-  triggers = {
-    redeployment = sha1(jsondecode(aws_api_gateway_rest_api.rest-api.body))
-  }
-  */
 
   lifecycle {
     create_before_destroy = true
@@ -263,11 +218,6 @@ resource "aws_api_gateway_stage" "gw-stage" {
     rest_api_id = aws_api_gateway_rest_api.rest-api.id
     stage_name = "dev" 
 }
-######################## END OF THE BLOCK ##########################################
-
-
-
-
 ######################################################################
 resource "aws_s3_bucket" "hosting_bucket" {
   bucket = var.bucket_name

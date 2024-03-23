@@ -8,7 +8,6 @@ variable "bucket_name" {
   type        = string
 }
 
-#################################
 variable "api-methods" {
   type = map(object({
     api_key_required = string
@@ -16,5 +15,3 @@ variable "api-methods" {
     http_method = string 
   }))
 }
-
-#################################
