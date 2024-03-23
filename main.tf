@@ -3,6 +3,11 @@ module "template_files" {
 
   base_dir = "${path.module}/web"
 }
+
+provider "aws" {
+  region = var.aws_region
+}
+#######################THE FOLLOWING BLOCK IS TO TEST THE LAMBDA & API GATEWAY CREATION########################
 ##########################################################################
 data "aws_iam_policy_document" "assume_role" {
   statement {
@@ -51,7 +56,6 @@ resource "aws_api_gateway_rest_api" "rest-api" {
 output "rest-api-id" {
   value = aws_api_gateway_rest_api.rest-api.id
 }
-
 ##########################################################################
 resource "aws_api_gateway_resource" "api-gw-resource" {
   parent_id   = aws_api_gateway_rest_api.rest-api.root_resource_id
@@ -60,7 +64,6 @@ resource "aws_api_gateway_resource" "api-gw-resource" {
 
   depends_on = [aws_api_gateway_rest_api.rest-api]
 }
-
 ##########################################################################
 resource "aws_api_gateway_method" "gw-method" {
   for_each = var.api-methods

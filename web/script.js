@@ -19,7 +19,7 @@ function makeMove(index) {
 }
 
 function aiMove() {
-  const apiUrl = 'https://h9y76miec2.execute-api.eu-west-3.amazonaws.com/dev/myResource';  // Replace with your API endpoint URL
+  const apiUrl = 'API-INVOKE-URL';  // Replace with your API endpoint URL
 
    console.log('Making AI move request...');
 
