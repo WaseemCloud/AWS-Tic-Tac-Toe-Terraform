@@ -1,7 +1,21 @@
 # Tic-Tac-Toe Full Deployment using Terraform on AWS 🚀☁️
 
+
 ![d4747cb7dcbecb5223b83355ea97a3be-removebg-preview](https://github.com/WaseemCloud/Tic-Tac-Toe-AI-Game-on-AWS-Management-Console-/assets/157589909/6c41585d-d5de-467c-835c-da0cbfe15838)
 
+This project is showcasing the power of IaC, where you can re-produce your entire "Tic-Tac-Toe" configuration in a matter of minutes using Terraform.
+
+Checkout the previous "Tic-Tac-Toe" project, which is fully explained, and deployed using AWS Management Console:
+
+https://github.com/WaseemCloud/AWS-Tic-Tac-Toe-AI-Game-on-Management-Console-
+
+A full step-by-step tutorial has been recorded and uploaded to my Youtube channel:
+
+👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇
+
+https://www.youtube.com/watch?v=6dRIrwBlDdg
+
+-----------------------------
 
 - Clone this repository locally to your machine.
 - Make sure to comment the resource block that is responsible to upload your objects to S3. The reason for this, that you will need to update your script.js file with the Invoke URL of the API Gateway.
