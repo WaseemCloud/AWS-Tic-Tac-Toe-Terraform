@@ -17,6 +17,14 @@ https://www.youtube.com/watch?v=6dRIrwBlDdg
 
 -----------------------------
 
+- The following Architecture will be re-produced using IaC with Terraform:
+
+![arch](https://github.com/WaseemCloud/Tic-Tac-Toe-AI-Game-on-AWS-Management-Console-/assets/157589909/f3f55289-9319-4f9e-91ee-d78f229fd114)
+
+--------------------------------------------------
+# Steps: 
+--------------------------------------------------
+
 - Clone this repository locally to your machine.
 - Make sure to comment the resource block that is responsible to upload your objects to S3. The reason for this, that you will need to update your script.js file with the Invoke URL of the API Gateway.
 
