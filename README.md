@@ -10,3 +10,4 @@
       terraform apply -var-file vars.tfvars
   
 ![Screen Shot 2024-03-24 at 2 57 04 PM](https://github.com/WaseemCloud/AWS-Tic-Tac-Toe-Terraform/assets/157589909/cc575f0d-d542-42bd-a520-c3d41123bef9)
+![Screen Shot 2024-03-24 at 2 58 59 PM](https://github.com/WaseemCloud/AWS-Tic-Tac-Toe-Terraform/assets/157589909/8e53743a-86b8-4768-898c-d4d063c4b9df)
