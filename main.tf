@@ -207,7 +207,10 @@ resource "aws_api_gateway_deployment" "api-deploy" {
 
   depends_on = [
     aws_api_gateway_method.gw-method,
-    aws_api_gateway_integration.gw-integration-1
+    aws_api_gateway_integration.gw-integration-1,
+    aws_api_gateway_integration.gw-integration-2,
+    aws_api_gateway_method_response.gw-method-response-1,
+    aws_api_gateway_method_response.gw-method-response-2
     ]
 }
 ##########################################################################
